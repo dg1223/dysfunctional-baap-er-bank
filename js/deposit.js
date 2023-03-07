@@ -5,21 +5,29 @@ document.getElementById("btn-deposit").addEventListener("click", function () {
     2. get the value from the element
     3. convert string value to a number
     */
-  const newDepositAmount = getInputFieldValueById("deposit-field");
+  const newDepositAmountText = document.getElementById("deposit-field").value;
+  const newDepositAmount = parseFloat(newDepositAmountText);
   /* 
     1. get previous deposit total by id
 
     */
-  const previousDepositTotal = getTextElementValueById("deposit-total");
+  const previousDepositTotalField = document.getElementById("deposit-total");
+  const previousDepositTotalText = previousDepositTotalField.innerText;
+  const previousDepositTotal = parseFloat(previousDepositTotalText);
+  // console.log(previousDepositTotalText, previousDepositTotal);
 
   // calculate new deposit total
   const newDepositTotal = previousDepositTotal + newDepositAmount;
-  console.log(newDepositTotal, previousDepositTotal, newDepositAmount);
+  // console.log(newDepositTotal, previousDepositTotal, newDepositAmount);
   // set deposit total value
-  setTextElementValueById("deposit-total", newDepositTotal);
+  document.getElementById("deposit-total").innerText = newDepositTotal;
+  document.getElementById("deposit-field").value = "";
+  // setTextElementValueById("deposit-total", newDepositTotal);
 
   // get previous balance by using the function
-  const previousBalanceTotal = getextElementValueById("balance-total");
+  const previousBalanceTotalField = document.getElementById("balance-total");
+  const previousBalanceTotalText = previousBalanceTotalField.innerText;
+  const previousBalanceTotal = parseFloat(previousBalanceTotalText);
   const newBalanceTotal = previousBalanceTotal + newDepositAmount;
-  setTextElementValueById("balance-total", newBalanceTotal);
-);
+  document.getElementById("balance-total").innerText = newBalanceTotal;
+});
